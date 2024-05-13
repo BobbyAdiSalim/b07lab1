@@ -1,10 +1,7 @@
 public class Polynomial {
-	double[] coef;
+	double[] coef = {0};
 	
-	public Polynomial() {
-		coef = new double[1];
-		coef[0] = 0;
-	}
+	public Polynomial() {}
 	
 	public Polynomial(double[] coef) {
 		this.coef = coef;
