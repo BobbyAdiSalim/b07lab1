@@ -162,13 +162,13 @@ public class Polynomial {
 		int[] newExp = new int[newLength];
 		double[] newCoef = new double[newLength];
 
-		for (int i = 0; i < newLength; i++) {
+		for (int i = 0, newI = 0; i < tempIdx; i++) {
 			if (tempCoef[i] == 0) {
-				i--;
 				continue;
 			}
-			newExp[i] = tempExp[i];
-			newCoef[i] = tempCoef[i];
+			newExp[newI] = tempExp[i];
+			newCoef[newI] = tempCoef[i];
+			newI++;
 		}
 
 		Polynomial newPoly =  new Polynomial(newCoef, newExp);
@@ -218,13 +218,13 @@ public class Polynomial {
 		int[] newExp = new int[newLength];
 		double[] newCoef = new double[newLength];
 
-		for (int i = 0; i < newLength; i++) {
+		for (int i = 0, newI = 0; i < tempIdx; i++) {
 			if (tempCoef[i] == 0) {
-				i--;
 				continue;
 			}
-			newExp[i] = tempExp[i];
-			newCoef[i] = tempCoef[i];
+			newExp[newI] = tempExp[i];
+			newCoef[newI] = tempCoef[i];
+			newI++;
 		}
 
 		Polynomial newPoly =  new Polynomial(newCoef, newExp);

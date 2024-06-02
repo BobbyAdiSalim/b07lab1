@@ -74,5 +74,20 @@ public class Driver {
 		System.out.println("3 is a root of simple: " + simple.hasRoot(3));
 		System.out.println("-3 is a root of simple: " + simple.hasRoot(-3));
 		System.out.println("0 is a root of simple: " + simple.hasRoot(0));
+		System.out.println("");
+		
+		double[] ce1 = {1, 2};
+		int[] ee1 = {0, 1};
+		double[] ce2 = {-1, 2};
+		int[] ee2 = {0, 1}; 
+
+		Polynomial pe1 = new Polynomial(ce1, ee1);
+		Polynomial pe2 = new Polynomial(ce2, ee2);
+		Polynomial sumE = pe1.multiply(pe2);
+		
+		System.out.println(pe1.toString());
+		System.out.println(pe2.toString());
+		System.out.println(sumE.toString());
+
 	}
 }
