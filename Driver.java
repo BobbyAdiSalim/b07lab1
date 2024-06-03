@@ -83,11 +83,11 @@ public class Driver {
 
 		Polynomial pe1 = new Polynomial(ce1, ee1);
 		Polynomial pe2 = new Polynomial(ce2, ee2);
-		Polynomial sumE = pe1.multiply(pe2);
+		Polynomial sumE = pe1.add(pe2);
 		
 		System.out.println(pe1.toString());
 		System.out.println(pe2.toString());
 		System.out.println(sumE.toString());
-
+		System.out.println("");
 	}
 }

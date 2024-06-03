@@ -190,7 +190,7 @@ public class Polynomial {
 	public Polynomial multiply(Polynomial p) {
 		int argLength = p.exp.length;
 		int thisLength = exp.length;
-		int maxLength = argLength + thisLength;
+		int maxLength = argLength * thisLength;
 		double[] tempCoef = new double[maxLength];
 		int[] tempExp = new int[maxLength];
 
