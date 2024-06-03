@@ -5,8 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Polynomial {
-	double[] coef = {};
-	int[] exp = {};
+	double[] coef;
+	int[] exp;
 	
 	// Constructors
 	public Polynomial() {
@@ -64,7 +64,7 @@ public class Polynomial {
 	// String rep
 	@Override
 	public String toString() {
-		if (exp.length == 0) {
+		if (exp == null || exp.length == 0) {
 			return "0";
 		}
 
@@ -98,6 +98,7 @@ public class Polynomial {
 	
 
 	public static int getIndex(int[] exp, int e) {
+		if (exp == null) return -1;
 		for (int i = 0; i < exp.length; i ++) {
 			if (exp[i] == e) {
 				return i;
@@ -107,6 +108,7 @@ public class Polynomial {
 	}
 
 	public static int countOccur(double[] coef, double c, int start, int end) {
+		if (coef == null) return 0;
 		int count = 0;
 		for (int i = start; i < end; i ++) {
 			if (coef[i] == c) {
@@ -117,6 +119,19 @@ public class Polynomial {
 	}
 
 	public Polynomial add(Polynomial p) {
+		if (exp == null) {
+			double[] emptyC = {};
+			int[] emptyE = {};
+			Polynomial newThis = new Polynomial(emptyC, emptyE);
+			return newThis.add(p);
+		}
+		if (p.exp == null) {
+			double[] emptyC = {};
+			int[] emptyE = {};
+			Polynomial newArg = new Polynomial(emptyC, emptyE);
+			return this.add(newArg);
+		}
+
 		int argLength = p.exp.length;
 		int thisLength = exp.length;
 		int maxLength = argLength + thisLength;
@@ -158,7 +173,9 @@ public class Polynomial {
 			}
 		}
 		
-		int newLength = tempIdx - countOccur(tempCoef, 0, 0, tempIdx); 
+		int newLength = tempIdx - countOccur(tempCoef, 0, 0, tempIdx);
+		if (newLength == 0) return new Polynomial();
+
 		int[] newExp = new int[newLength];
 		double[] newCoef = new double[newLength];
 
@@ -176,6 +193,7 @@ public class Polynomial {
 	} 
 
 	public double evaluate(double x) {
+		if (exp == null) return 0;
 		double result = 0;
 		for (int i = 0; i < exp.length; i++) {
 			result += coef[i] * Math.pow(x, exp[i]);
@@ -188,6 +206,19 @@ public class Polynomial {
 	}
 
 	public Polynomial multiply(Polynomial p) {
+		if (exp == null) {
+			double[] emptyC = {};
+			int[] emptyE = {};
+			Polynomial newThis = new Polynomial(emptyC, emptyE);
+			return newThis.multiply(p);
+		}
+		if (p.exp == null) {
+			double[] emptyC = {};
+			int[] emptyE = {};
+			Polynomial newArg = new Polynomial(emptyC, emptyE);
+			return this.multiply(newArg);
+		}
+
 		int argLength = p.exp.length;
 		int thisLength = exp.length;
 		int maxLength = argLength * thisLength;
@@ -215,6 +246,8 @@ public class Polynomial {
 		}
 
 		int newLength = tempIdx - countOccur(tempCoef, 0, 0, tempIdx); 
+		if (newLength == 0) return new Polynomial();
+		
 		int[] newExp = new int[newLength];
 		double[] newCoef = new double[newLength];
 

@@ -89,5 +89,8 @@ public class Driver {
 		System.out.println(pe2.toString());
 		System.out.println(sumE.toString());
 		System.out.println("");
+		System.out.println(zero.exp == null && zero.coef == null);
+		Polynomial zero2 = zero.multiply(zero);
+		System.out.println(zero2.exp == null && zero2.coef == null);
 	}
 }
